@@ -69,6 +69,8 @@ function Modal({ title }) {
         case "value":
           update.value = value;
           break;
+        default:
+          console.log("No rule updated");
       }
       if (i === -1) {
         primaryFilter = update;
