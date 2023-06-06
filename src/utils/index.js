@@ -1,5 +1,5 @@
 export const operatorsEnum = Object.freeze({
-  IS: "is",
+  EQUALS: "equals",
   IS_NOT: "is not",
   IS_EMPTY: "is empty",
   IS_NOT_EMPTY: "is not empty",

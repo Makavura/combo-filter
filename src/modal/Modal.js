@@ -1,7 +1,8 @@
 import React from "react";
-import FilterRule from "./FilterRule";
+
 import Style from "./Modal.module.css";
-import { ReactComponent as PlusIcon } from "./assets/plus.svg";
+import FilterRule from "../filter/FilterRule";
+import { ReactComponent as PlusIcon } from "../assets/plus.svg";
 
 function Modal({ title }) {
   let primaryFilter = {
