@@ -1,18 +1,20 @@
+import * as React from "react";
+
 import Style from "./FilterRule.module.css";
-import { fieldsEnum, clauseEnums } from "./utils";
+import { fieldsEnum, clauseEnums, operatorsEnum } from "./utils";
 import { ReactComponent as DeleteIcon } from "./assets/delete.svg";
 
-export default function FilterRule({
-  filter,
-  handleChange,
-  handleRemoveFilterRule,
-}) {
+function FilterRule({ filter, handleChange, handleRemoveFilterRule }) {
   return (
     <div className={Style.FilterRuleWrapper}>
       {filter?.index === 0 ? (
         <div className={Style.WhereLabel}>Where</div>
       ) : (
-        <select onChange={handleChange} className={Style.Combinator}>
+        <select
+          id="condition"
+          onChange={(e) => handleChange(filter?.index, e)}
+          className={Style.Combinator}
+        >
           {Object.values(clauseEnums).map((field, index) => (
             <option value={field} key={index}>
               {field}
@@ -20,32 +22,43 @@ export default function FilterRule({
           ))}
         </select>
       )}
-      <select onChange={handleChange} className={Style.Select}>
+      <select
+        id="field"
+        onChange={(e) => handleChange(filter?.index, e)}
+        className={Style.Select}
+      >
         {Object.values(fieldsEnum).map((field, index) => (
           <option value={field} key={index}>
             {field}
           </option>
         ))}
       </select>
-      <select onChange={handleChange} className={Style.Select}>
-        {Object.values(fieldsEnum).map((field, index) => (
+      <select
+        id="operator"
+        onChange={(e) => handleChange(filter?.index, e)}
+        className={Style.Select}
+      >
+        {Object.values(operatorsEnum).map((field, index) => (
           <option value={field} key={index}>
             {field}
           </option>
         ))}
       </select>
       <input
+        id="value"
         type="text"
         name="value"
-        onChange={handleChange}
+        onChange={(e) => handleChange(filter?.index, e)}
         className={Style.Input}
       />
-      <button className={Style.DeleteIconWrapper}>
+      <div className={Style.DeleteIconWrapper}>
         <DeleteIcon
-          onClick={handleRemoveFilterRule(filter?.index)}
+          onClick={() => handleRemoveFilterRule(filter?.index)}
           className={Style.DeleteIcon}
         />
-      </button>
+      </div>
     </div>
   );
 }
+
+export default FilterRule;

@@ -3,91 +3,103 @@ import FilterRule from "./FilterRule";
 import Style from "./Modal.module.css";
 import { ReactComponent as PlusIcon } from "./assets/plus.svg";
 
-export default function Modal({ title }) {
-  const primaryFilter = {
-    condition: "", // hold form values
+function Modal({ title }) {
+  let primaryFilter = {
+    condition: "",
     operator: "",
     value: "",
     field: "",
-    index: 0, // could be done by uuid
+    index: 0,
   };
 
-  const [filters, setFilters] = React.useState([]); // placeholder for filter rule
+  const [filters, setFilters] = React.useState([]);
 
   React.useEffect(() => {
-    console.log(filters);
+    if (!filters) {
+      console.warn("no filters");
+    }
   }, [filters]);
 
   const handleAddFilterRule = () => {
-    setFilters([
-      ...filters,
+    const newFilters = [
       {
         condition: "",
         operator: "",
         value: "",
         field: "",
-        index: filters.length + 1,
+        index: (Math.random() * 1000000000).toLocaleString(),
       },
-    ]);
+      ...filters,
+    ];
+    setFilters(newFilters);
   };
 
   const handleRemoveFilterRule = (index) => {
-    // const filtersSnapshot = [...filters];
-    // const i = filtersSnapshot.findIndex((filter) => filter.index === index);
-    // filtersSnapshot.splice(i, 1);
-    // setFilters(...filtersSnapshot);
-    console.log(index);
+    if (index) {
+      const filtersSnapshot = JSON.parse(JSON.stringify(filters));
+      const i = filtersSnapshot.findIndex((filter) => filter.index === index);
+      filtersSnapshot.splice(i, 1);
+      setFilters(filtersSnapshot);
+    }
   };
 
   const handleChange = (filterIndex, e) => {
-    // is this necessary or will it automatically be picked up by form?
     const value = e.target.value;
     const input = e.target.id;
-    const update = {};
-    switch (input) {
-      case "condition":
-        update.condition = value;
-        break;
-      case "field":
-        update.field = value;
-        break;
-      case "operator":
-        update.operator = value;
-        break;
-      case "value":
-        update.value = value;
-        break;
-    }
-    console.log(update);
-    // update state
-    const filtersSnapshot = [...filters];
+    e.preventDefault();
+    const filtersSnapshot = JSON.parse(JSON.stringify(filters));
     const i = filtersSnapshot.findIndex(
       (filter) => filter.index === filterIndex
     );
-    filtersSnapshot.splice(i, 1);
-    filtersSnapshot.push({
-      ...update,
-      index: filterIndex,
-    });
-    setFilters(...filtersSnapshot);
+
+    const update = i === -1 ? primaryFilter : filtersSnapshot[i];
+    if (!update) console.warn("no update");
+    if (update) {
+      switch (input) {
+        case "condition":
+          update.condition = value;
+          break;
+        case "field":
+          update.field = value;
+          break;
+        case "operator":
+          update.operator = value;
+          break;
+        case "value":
+          update.value = value;
+          break;
+      }
+      if (i === -1) {
+        primaryFilter = update;
+      } else {
+        filtersSnapshot.splice(i, 1);
+        filtersSnapshot.push({
+          ...update,
+        });
+        setFilters(filtersSnapshot);
+      }
+    }
   };
 
   return (
     <div className={Style.Modal}>
       <h6>{title}</h6>
-      <FilterRule
-        filter={primaryFilter}
-        handleChange={handleChange}
-        handleRemoveFilterRule={handleRemoveFilterRule}
-      />
-      {filters?.map((filter, index) => (
+      <form>
         <FilterRule
-          key={`${filter.index + Date.now()}`}
+          filter={primaryFilter}
           handleChange={handleChange}
           handleRemoveFilterRule={handleRemoveFilterRule}
         />
-      ))}
-
+        {filters.length > 0 &&
+          filters?.map((filter, index) => (
+            <FilterRule
+              filter={filter}
+              key={`${index}`}
+              handleChange={handleChange}
+              handleRemoveFilterRule={handleRemoveFilterRule}
+            />
+          ))}
+      </form>
       <button className={Style.AddFilterBtn} onClick={handleAddFilterRule}>
         <PlusIcon />
         Add filter rule
@@ -95,3 +107,5 @@ export default function Modal({ title }) {
     </div>
   );
 }
+
+export default Modal;
