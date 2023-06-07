@@ -1,6 +1,7 @@
 import React from "react";
 
 import Style from "./Modal.module.css";
+import Button from "../button/Button";
 import FilterRule from "../filter/FilterRule";
 import { ReactComponent as PlusIcon } from "../assets/plus.svg";
 
@@ -103,10 +104,10 @@ function Modal({ title }) {
             />
           ))}
       </form>
-      <button className={Style.AddFilterBtn} onClick={handleAddFilterRule}>
+      <Button className={Style.AddFilterBtn} onClick={handleAddFilterRule}>
         <PlusIcon />
         Add filter rule
-      </button>
+      </Button>
     </div>
   );
 }
