@@ -1,7 +1,7 @@
 import * as React from "react";
 
 import Style from "./FilterRule.module.css";
-import { fieldsEnum, clauseEnums, operatorsEnum } from "../utils";
+import { fieldsEnum, clauseEnums, operatorsEnum } from "../utils/enums";
 import { ReactComponent as DeleteIcon } from "../assets/delete.svg";
 
 function FilterRule({ filter, handleChange, handleRemoveFilterRule }) {
