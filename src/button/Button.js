@@ -10,7 +10,7 @@ const Button = ({
   <button
     className={combineClasses(
       className,
-      style == "primary" ? Style.PrimaryButton : Style.Button
+      style === "primary" ? Style.PrimaryButton : Style.Button
     )}
     {...attributes}
   >
