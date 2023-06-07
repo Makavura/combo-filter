@@ -20,15 +20,17 @@
 }
 
 .AddFilterBtn {
+  width: 90%;
   border: none;
   height: 100%;
-  padding: 12px;
+  outline: none;
   display: flex;
   background: none;
   align-items: center;
   flex-direction: row;
   margin: 0 0 24px 28px;
   text-transform: uppercase;
+  padding: 12px 0px 12px 0px;
 }
 
 .AddFilterBtn > svg {
@@ -36,8 +38,4 @@
   height: 20px;
   display: block;
   margin-right: 12px;
-}
-
-.AddFilterBtn:hover {
-  border: none;
 }

@@ -5,7 +5,7 @@ import Button from "../button/Button";
 import FilterRule from "../filter/FilterRule";
 import { ReactComponent as PlusIcon } from "../assets/plus.svg";
 
-function Modal({ title }) {
+function Modal({ title, ...attributes }) {
   let primaryFilter = {
     condition: "",
     operator: "",
@@ -86,28 +86,30 @@ function Modal({ title }) {
   };
 
   return (
-    <div className={Style.Modal}>
-      <h6>{title}</h6>
-      <form>
-        <FilterRule
-          filter={primaryFilter}
-          handleChange={handleChange}
-          handleRemoveFilterRule={handleRemoveFilterRule}
-        />
-        {filters.length > 0 &&
-          filters?.map((filter, index) => (
-            <FilterRule
-              filter={filter}
-              key={`${index}`}
-              handleChange={handleChange}
-              handleRemoveFilterRule={handleRemoveFilterRule}
-            />
-          ))}
-      </form>
-      <Button className={Style.AddFilterBtn} onClick={handleAddFilterRule}>
-        <PlusIcon />
-        Add filter rule
-      </Button>
+    <div {...attributes} id="modal">
+      <div className={Style.Modal}>
+        <h6>{title}</h6>
+        <form>
+          <FilterRule
+            filter={primaryFilter}
+            handleChange={handleChange}
+            handleRemoveFilterRule={handleRemoveFilterRule}
+          />
+          {filters.length > 0 &&
+            filters?.map((filter, index) => (
+              <FilterRule
+                filter={filter}
+                key={`${index}`}
+                handleChange={handleChange}
+                handleRemoveFilterRule={handleRemoveFilterRule}
+              />
+            ))}
+        </form>
+        <Button className={Style.AddFilterBtn} onClick={handleAddFilterRule}>
+          <PlusIcon />
+          Add filter rule
+        </Button>
+      </div>
     </div>
   );
 }
