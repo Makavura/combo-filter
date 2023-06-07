@@ -1,0 +1,59 @@
+.Button {
+  font-weight: 500;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  padding: var(--s);
+  outline: 0px;
+  background-color: #ffffff;
+  border: 1px solid #e6e6e6;
+  border-radius: var(--s);
+  color: var(--color-gray-900);
+  cursor: pointer;
+  box-sizing: border-box;
+  transition: all 150ms;
+}
+
+.Button:hover {
+  background-color: #f3f4f6;
+}
+
+.Button:focus-visible {
+  outline-color: var(--color-gray-900);
+  outline-offset: 0.25rem;
+  outline-style: solid;
+  outline-width: 0.15rem;
+}
+
+.PrimaryButton {
+  padding: var(--s);
+  border-width: 0px;
+  background-color: var(--color-blue-500);
+  color: #ffffff;
+}
+
+.PrimaryButton:hover {
+  background-color: var(--color-blue-700);
+}
+
+.PrimaryButton:focus-visible {
+  outline-color: var(--color-gray-900);
+  outline-offset: 0.25rem;
+  outline-style: solid;
+  outline-width: 0.15rem;
+}
+
+.Button[disabled],
+.Button[disabled]:hover,
+.PrimaryButton[disabled],
+.PrimaryButton[disabled]:hover {
+  color: #ffffff;
+  background-color: var(--color-gray-500);
+  cursor: default;
+}
+
+@media screen and (max-width: 768px) {
+  .Button {
+    border-radius: 0.75rem;
+    font-size: var(--text-size-small);
+  }
+}
