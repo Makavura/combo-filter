@@ -2,6 +2,7 @@ import * as React from "react";
 
 import Style from "./App.module.css";
 import Modal from "./modal/Modal";
+import Button from "./button/Button";
 
 function App() {
   const [open, setOpen] = React.useState(false);
@@ -10,9 +11,9 @@ function App() {
     <div className={open ? Style.Backdrop : Style.None}>
       <div className={Style.App} onClick={() => (open ? setOpen(!open) : null)}>
         <div className={Style.Header}>Combo Filter.</div>
-        <button className={Style.Button} onClick={() => setOpen(!open)}>
+        <Button className={Style.Button} onClick={() => setOpen(!open)}>
           {open ? "Hide" : "Show"} combo filter
-        </button>
+        </Button>
       </div>
       {open && <Modal title={"In this view show records"}></Modal>}
     </div>
