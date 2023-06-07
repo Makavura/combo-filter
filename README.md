@@ -24,3 +24,5 @@ Delete icon - remove a filter. Unavailable on initial rule.
 ![image](https://github.com/Makavura/combo-filter/assets/39646663/21d5f08c-1b4a-444b-8239-fc7978c73978)
 
 ### Demo link:
+
+https://647f8d7fbce1d10009bb6972--subtle-pastelito-d1d4ab.netlify.app/
