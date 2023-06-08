@@ -1,23 +1,26 @@
-import logo from './logo.svg';
-import './App.css';
+import * as React from "react";
+
+import Style from "./App.module.css";
+import Modal from "./modal/Modal";
+import Button from "./button/Button";
 
 function App() {
+  const [open, setOpen] = React.useState(false);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className={open ? Style.Backdrop : Style.None}>
+      <div className={Style.App} onClick={() => (open ? setOpen(!open) : null)}>
+        <div className={Style.Header}>Combo Filter.</div>
+        <Button className={Style.ToggleButton} onClick={() => setOpen(!open)}>
+          {open ? "Hide" : "Show"} combo filter
+        </Button>
+      </div>
+      {open && (
+        <Modal
+          className={Style.ModalWrapper}
+          title={"In this view show records"}
+        ></Modal>
+      )}
     </div>
   );
 }

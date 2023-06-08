@@ -1,0 +1,27 @@
+.Button {
+  outline: 0px;
+  cursor: pointer;
+  font-weight: 500;
+  letter-spacing: 1px;
+  box-sizing: border-box;
+  text-transform: uppercase;
+  background-color: #ffffff;
+}
+
+.Button:hover {
+  background-color: none;
+  border: none;
+  background: none;
+}
+
+.PrimaryButton {
+  border: none;
+  color: #ffffff;
+}
+
+@media screen and (max-width: 768px) {
+  .Button {
+    border-radius: 0.75rem;
+    font-size: var(--text-size-small);
+  }
+}

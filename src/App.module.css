@@ -1,0 +1,35 @@
+.App {
+  margin: auto;
+  display: flex;
+  flex-direction: row;
+  padding: 20px;
+  justify-content: space-between;
+}
+
+.Header {
+  font-size: 14px;
+  padding: 12px;
+  text-transform: uppercase;
+}
+
+.Backdrop {
+  width: 100vw;
+  height: 100vh;
+  background: rgba(92, 110, 153, 0.2);
+}
+
+.Backdrop > *:not(.ModalWrapper) {
+  opacity: 0.5;
+  backdrop-filter: blur(3px);
+}
+
+.ToggleButton {
+  border: none;
+  padding: 10px;
+  border-radius: 18px;
+}
+
+.ToggleButton:hover {
+  background: #646779;
+  opacity: 1;
+}

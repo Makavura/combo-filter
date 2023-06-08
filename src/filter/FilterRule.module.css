@@ -1,0 +1,74 @@
+.FilterRuleWrapper {
+  width: 100%;
+  height: 48px;
+  display: flex;
+  font-size: 14px;
+  flex-direction: row;
+  align-items: center;
+  margin: 6px 28px 6px 28px;
+}
+
+.RemoveRuleIcon svg {
+  color: #646779;
+}
+
+.WhereLabel {
+  width: 88px;
+  height: 48px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  background: #f6f8fd;
+  box-sizing: border-box;
+  padding: 0px 0px 0px 24px;
+  border: 1px solid #d7deec;
+  border-radius: 16px 0px 0px 16px;
+}
+
+.Input {
+  width: 156px;
+  height: 48px;
+  border-radius: 0;
+  box-sizing: border-box;
+  border: 1px solid #d7deec;
+  padding: 0px 0px 0px 24px;
+}
+.Input:enabled {
+  border: 1px solid #d7deec;
+}
+
+.DeleteIcon {
+  width: 16px;
+  height: 16px;
+  display: block;
+}
+
+.DeleteIconWrapper {
+  width: 64px;
+  height: 48px;
+  display: flex;
+  background: none;
+  align-items: center;
+  box-sizing: border-box;
+  justify-content: center;
+  border: 1px solid #d7deec;
+  border-radius: 0px 16px 16px 0px;
+}
+
+.Select {
+  width: 156px;
+  height: 48px;
+  background: none;
+  padding: 0px 0px 0px 24px;
+  border: 1px solid #d7deec;
+}
+
+.Combinator {
+  width: 88px;
+  height: 48px;
+  background: none;
+  box-sizing: border-box;
+  padding: 0px 0px 0px 24px;
+  border: 1px solid #d7deec;
+  border-radius: 16px 0px 0px 16px;
+}
